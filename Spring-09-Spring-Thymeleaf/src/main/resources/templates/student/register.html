@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="#{index.page.title}" >Title</title>
 </head>
 <body>
 
@@ -32,6 +32,13 @@
     <li th:each="student: ${students}" th:text="${student.firstName} "></li>
 </ul>
 
+<!--Conditional logic-->
+<div th:text = "${students.get(0).getAge() > 25 ? 'ELIGIBLE': 'NOT ELIGIBLE'}"></div>
+
+<div>
+    <span th:if="${students.get(0).getState() == 'Arizona'}">Arizona</span>
+    <span th:unless="${students.get(0).getState() == 'Arizona'}">Not Arizona</span>
+</div>
 
 </body>
 </html>
